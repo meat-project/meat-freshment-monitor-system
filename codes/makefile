@@ -1,0 +1,2 @@
+all:
+	./format.sh

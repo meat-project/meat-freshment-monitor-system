@@ -1,1 +1,1 @@
-clang-format
+clang-format --style=file -i *.ino
