@@ -1,7 +1,7 @@
-#include "headers/MHZ.h"
+//#include "headers/MHZ.h"
 
-#define MQ136 A0
-#define MQ137 A1
+const int MQ136 = A0;
+const int MQ137 = A1;
 const int ITER_TIME = 500;
 
 void setup()  // Runs only once
