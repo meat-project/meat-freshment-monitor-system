@@ -12,7 +12,8 @@
 3. upload code to arduino board, and run
 ### problems
 - `[Error] Uploading sketch 'sensor.ino': Exit with code=1`
-	- set `/dev/ttyACMXXX` port, which arduino board used, with the command `chmod` (fixed in makefile)
+	- modify the permission of `/dev/ttyACMXXX`(varies depending on device) port, which arduino board used, with the command `chmod`
+	- it's fixed in makefile
 ## Installation on Ubuntu, and use it with vscode
 ### IDE
 - [Arduino IDE](https://www.arduino.cc/en/software) (we use Arduino 1.8.15)
@@ -25,4 +26,4 @@
 ### constants and formulas
 - [MQ-137](https://circuitdigest.com/microcontroller-projects/arduino-mq137-ammonia-sensor)
 ### Headers
-- [MH-Z19B](https://github.com/tobiasschuerg/MH-Z-CO2-Sensors)
+- [MH-Z CO2 sensors (MH-Z19B)](https://github.com/tobiasschuerg/MH-Z-CO2-Sensors)
