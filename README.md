@@ -22,5 +22,7 @@
 - set `Arduino: Path` to where you install arduino IDE. Here, I set it to `~/arduino-1.8.15/`
 
 ## Resource
+### constants and formulas
+- [MQ-137](https://circuitdigest.com/microcontroller-projects/arduino-mq137-ammonia-sensor)
 ### Headers
 - [MH-Z19B](https://github.com/tobiasschuerg/MH-Z-CO2-Sensors)
