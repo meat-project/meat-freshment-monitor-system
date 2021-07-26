@@ -33,9 +33,10 @@ void loop() {
 }
 
 void mq136_routine() {
-	float mq136 = 0.0;
-	float sum136 = 0.0;
-
+	const double SO2_CURVE[] = { 40.44109566, -1.085728557 }; //reference is mentioned in readme
+	double mq136 = 0.0;
+	double sum136 = 0.0;
+	
 	for(int test_cycle = 1; test_cycle <= ITER_TIME; test_cycle++) {
 		sum136 += analogRead(MQ136);
 	}
