@@ -2,10 +2,11 @@
 
 ## Usage
 ### steps
-1. use the following __makefile command__ in `.../Meat-Freshment-Monitor-System/codes/` directory to:
+1. in `.../Meat-Freshment-Monitor-System/codes/` directory, use the following 
 	```bash=
 	make
 	```
+	__makefile command__  to:
 	1. fixes port __permission problem__
 	2. auto-formats the arduino code
 2. add the repo to the workspace in VS Code
