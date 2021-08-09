@@ -1,16 +1,14 @@
 #include "headers/MHZ.h"
-
-void mq136_routine();
-void mq137_routine();
-void mhz19b_routine();
+//#include <ESP8266WiFi.h>
+#include <SoftwareSerial.h>
 
 const int MQ136 = A0;
 const int MQ137 = A1;
 const int ITER_TIME = 500;
 const int SETUP_DELAY = 200;
 const int LOOP_DELAY = 2000;
-const int CO2_IN = A2;
-// MHZ mhz19b(CO2_IN, MHZ19B);
+const int CO2_IN = 10;
+MHZ mhz19b(CO2_IN, MHZ19B);
 
 void setup()  // Runs only once
 {
@@ -18,7 +16,7 @@ void setup()  // Runs only once
 	/*pinMode(CO2_IN, INPUT);
 	while(!mhz19b.isReady())
 		delay(SETUP_DELAY);*/
-
+	
 	Serial.println("MQ-136  for H2S");
 	Serial.println("MQ-137  for NH3");
 	Serial.println("MH-Z19B for CO2 and temperature");
@@ -28,7 +26,7 @@ void setup()  // Runs only once
 void loop() {
 	mq136_routine();
 	mq137_routine();
-
+	//mhz19b_routine();
 	delay(LOOP_DELAY);
 }
 
@@ -64,7 +62,7 @@ void mq137_routine() {
 	Serial.println(ppm);
 }
 
-/*void mhz19b_routine(){
+void mhz19b_routine() {
 	int co2_ppm = mhz19b.readCO2PWM();
 	int temperature = mhz19b.getLastTemperature();
 
@@ -72,4 +70,4 @@ void mq137_routine() {
 	Serial.println(co2_ppm);
 	Serial.print("temperature = ");
 	Serial.println(temperature);
-}*/
+}

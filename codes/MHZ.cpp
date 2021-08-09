@@ -3,7 +3,7 @@
     By Tobias Schürg
 */
 
-#include "MHZ.h"
+#include "headers/MHZ.h"
 
 const int MHZ14A = 14;
 const int MHZ19B = 19;
