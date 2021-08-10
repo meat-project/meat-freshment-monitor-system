@@ -1,1 +1,1 @@
-clang-format --style=file -i *.ino
+clang-format --style=file -i *.ino *.h *.cpp

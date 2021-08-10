@@ -25,8 +25,7 @@
 
 ## Resource
 ### constants and formulas
-- [MQ-136 github code](https://github.com/empierre/arduino/blob/master/AirQuality-Multiple_Gas_Sensor1_4.ino)
-	> [MQ-136 github code](https://github.com/empierre/arduino/blob/master/AirQuality-Multiple_Gas_Sensor1_4.ino) is also reference to [MQ-136 datasheet](http://china-total.com/product/meter/gas-sensor/MQ136.pdf)
+- [some of MQ-136 code](https://github.com/Sanjay3008/Sewage-Gas-Monitoring-using-Iot-Version-2/blob/f199e6060e2b37410502cad5ec8bf4d761d838bf/Arduino%20Codes/Arduino.ino)
 - [MQ-136 datasheet](http://china-total.com/product/meter/gas-sensor/MQ136.pdf)
 - [MQ-137 code demo](https://circuitdigest.com/microcontroller-projects/arduino-mq137-ammonia-sensor)
 ### Headers

@@ -1,22 +1,28 @@
-#include "headers/MHZ.h"
+#include "MHZ.h"
 //#include <ESP8266WiFi.h>
 #include <SoftwareSerial.h>
 
-const int MQ136 = A0;
-const int MQ137 = A1;
+const int MQ136_PIN = A0;
+const int MQ137_PIN = A1;
+const int MHZ19B_PIN = 10;
 const int ITER_TIME = 500;
-const int SETUP_DELAY = 200;
+const int SETUP_DELAY = 5000;
 const int LOOP_DELAY = 2000;
-const int CO2_IN = 10;
-MHZ mhz19b(CO2_IN, MHZ19B);
+MHZ mhz19b(MHZ19B_PIN, MHZ19B);
 
 void setup()  // Runs only once
 {
 	Serial.begin(9600);
-	/*pinMode(CO2_IN, INPUT);
-	while(!mhz19b.isReady())
-		delay(SETUP_DELAY);*/
-	Serial.println("debugging...");
+	pinMode(MQ136_PIN, INPUT);
+	pinMode(MQ137_PIN, INPUT);
+	pinMode(MHZ19B_PIN, INPUT);
+
+	mhz19b.setDebug(true);
+	Serial.print("Waiting for MH-Z19B preheating ");
+	while(!mhz19b.isReady()) {
+		delay(SETUP_DELAY);
+		Serial.print(".");
+	}
 	Serial.println("MQ-136  for H2S");
 	Serial.println("MQ-137  for NH3");
 	Serial.println("MH-Z19B for CO2 and temperature");
@@ -26,22 +32,27 @@ void setup()  // Runs only once
 void loop() {
 	mq136_routine();
 	mq137_routine();
-	// mhz19b_routine();
+	mhz19b_routine();
 	delay(LOOP_DELAY);
 }
 
 void mq136_routine() {
-	const double SO2_CURVE[] = { 40.44109566, -1.085728557 };  // reference is mentioned in readme
-	double mq136 = 0.0;
-	double sum136 = 0.0;
-
-	for(int test_cycle = 1; test_cycle <= ITER_TIME; test_cycle++) {
-		sum136 += analogRead(MQ136);
-	}
-	mq136 = sum136 / ITER_TIME;
-
-	Serial.print("H2S average data: ");
-	Serial.println(mq136);
+	float m_136 = -0.23;  // Slope
+	float b_136 = 0.449;  // Y-Intercept
+	float R0_136 = 43.5;  // Sensor Resistance in fresh air
+	float RL_136 = 20.0;
+	float sensor_volt;	// Define variable for sensor voltage
+	float RS_gas;		// Define variable for sensor resistance
+	float ratio;		// Define variable for ratio
+	double sensorValue = analogRead(MQ136_PIN);
+	sensor_volt = sensorValue * (5.0 / 1023.0);
+	RS_gas = ((5.0 * RL_136) / sensor_volt) - RL_136;  // Get value of RS in a gas
+	ratio = RS_gas / R0_136;						   // Get ratio RS_gas/RS_air
+	double ppm_log = (log10(ratio) - b_136) / m_136;   // Get ppm value in linear scale according to the the ratio value
+	double ppm = pow(10, ppm_log);					   // Convert ppm value to log scale
+	Serial.print("H2S: ");
+	Serial.print(ppm);
+	Serial.println(" ppm");
 }
 
 void mq137_routine() {
@@ -53,21 +64,21 @@ void mq137_routine() {
 	double Rs;				  // Sensor resistance at gas concentration
 	double ratio;			  // Define variable for ratio
 
-	VRL = analogRead(MQ137) * (5.0 / 1023.0);		 // Measure the voltage drop and convert to 0-5V
+	VRL = analogRead(MQ137_PIN) * (5.0 / 1023.0);	 // Measure the voltage drop and convert to 0-5V
 	Rs = ((5.0 * RL) / VRL) - RL;					 // Use formula to get Rs value
 	ratio = Rs / Ro;								 // find ratio Rs/Ro
 	double ppm = pow(10, ((log10(ratio) - b) / m));	 // use formula to calculate ppm
 
-	Serial.print("NH3 (ppm) = ");
-	Serial.println(ppm);
+	Serial.print("NH3: ");
+	Serial.print(ppm);
+	Serial.println(" ppm");
 }
 
 void mhz19b_routine() {
 	int co2_ppm = mhz19b.readCO2PWM();
-	int temperature = mhz19b.getLastTemperature();
-
 	Serial.print("CO2 (ppm) = ");
 	Serial.println(co2_ppm);
+	int temperature = mhz19b.getLastTemperature();	// not configured due to no Rx,Tx connections.
 	Serial.print("temperature = ");
 	Serial.println(temperature);
 }
