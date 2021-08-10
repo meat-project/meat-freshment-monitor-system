@@ -16,7 +16,7 @@ void setup()  // Runs only once
 	/*pinMode(CO2_IN, INPUT);
 	while(!mhz19b.isReady())
 		delay(SETUP_DELAY);*/
-	
+	Serial.println("debugging...");
 	Serial.println("MQ-136  for H2S");
 	Serial.println("MQ-137  for NH3");
 	Serial.println("MH-Z19B for CO2 and temperature");
@@ -26,7 +26,7 @@ void setup()  // Runs only once
 void loop() {
 	mq136_routine();
 	mq137_routine();
-	//mhz19b_routine();
+	// mhz19b_routine();
 	delay(LOOP_DELAY);
 }
 
