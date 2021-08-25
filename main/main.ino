@@ -17,7 +17,7 @@ void setup()  // Runs only once
 	pinMode(MQ137_PIN, INPUT);
 	pinMode(MHZ19B_PIN, INPUT);
 
-	//mhz19b.setDebug(true);
+	// mhz19b.setDebug(true);
 	Serial.print("Waiting for MH-Z19B preheating ");
 	while(!mhz19b.isReady()) {
 		delay(SETUP_DELAY);
@@ -78,7 +78,7 @@ void mhz19b_routine() {
 	int co2_ppm = mhz19b.readCO2PWM();
 	Serial.print("CO2: ");
 	Serial.print(co2_ppm);
-  Serial.println(" ppm");
+	Serial.println(" ppm");
 	/*int temperature = mhz19b.getLastTemperature();	// not configured due to no Rx,Tx connections.
 	Serial.print("temperature = ");
 	Serial.println(temperature);*/
