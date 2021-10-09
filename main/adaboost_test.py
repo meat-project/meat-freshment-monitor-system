@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 from sklearn import metrics
 
 print("reading..")
-df = pd.read_csv('../result/all.csv')
+df = pd.read_csv('../result/all_fixed.csv')
 print(df)
 sdf = pd.DataFrame(df)
 sdf = sdf.drop(['type','time','month','day'], axis = 1);
@@ -23,7 +23,7 @@ print(X)
 print(y)
         
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.3)
-abc = AdaBoostClassifier(n_estimators = 50, learning_rate = 1)
+abc = AdaBoostClassifier(n_estimators = 100, learning_rate = 1)
 model = abc.fit(X_train, y_train)
 
 y_pred = model.predict(X_test)
