@@ -1,1 +1,53 @@
 \chapter{研究結果}
+
+\subsection{第一次進度報告進展}
+\begin{enumerate}
+	\item 採用樹莓派作為控製板 \begin{itemize}
+		\item 配置好樹莓派伺服器。
+		\item 以樹莓派作為裝置運算與控制的主體，並設定「通訊埠轉發」來達到組員可隨時以 ssh 遠端控制，
+			測試控制碼。 
+	\end{itemize}
+	\item 線路連接 \begin{itemize}
+		\item 焊接感測器與排母
+		\item 使其變為跳線或者杜邦線的規格，能與樹莓派線路界面連接。
+	\end{itemize}
+	\item 裝置設計：建立初步裝置設計圖
+	\item 控制碼及模型設計：利用 python 及其支援的 module ，熟悉並寫出簡單的測試碼
+	\item 遭遇的問題 \begin{itemize}
+		\item 感測器與機板的連接問題
+		\item 供電問題
+		\item 讀取資料的程式
+		\item 絕緣密閉
+		\item 系統穩定度
+		\item 詳細定義食物的狀態（ ex. 如何為腐敗？），並使之量化，能放入實驗設計
+	\end{itemize}
+	\item 短期改善與預計達成目標 \begin{itemize}
+		\item 欲先解決感測器連接問題（目前考慮重買器材？）
+		\item 要能夠使裝置能夠長時間運行，監測肉類，維持穩定
+		\item 設計肉類判別流程，該流程需可以明確判定肉類是否已腐敗
+	\end{itemize}
+\end{enumerate}
+
+\section{第二次進度報告進展}
+\begin{enumerate}
+	\item 絕緣問題解決（如附圖）
+	\item 短期改善與預計達成目標 \begin{itemize}
+		\item 讀取資料的程式問題
+		\item 設計實驗流程
+		\item 如何訓練判斷的模型
+	\end{itemize}
+\end{enumerate}
+
+\section{第三次進度報告進展}
+\begin{enumerate}
+	\item 確認所有感測器皆可正常運作 \begin{itemize}
+		\item 因為樹莓派的 python module 對於感測器支援較少，因此進度上遇到困難
+		\item 改用 arduino uno 作為我們接下來實驗用到的板子。
+	\end{itemize}
+	\item 改變控制板 \begin{itemize}
+		\item 讀取資料的程式問題
+		\item 設計實驗流程、訓練判斷的模型
+		\item arduino uno 與感測器的整合
+	\end{itemize}
+	\item 短期改善與預計達成目標
+\end{enumerate}
