@@ -1,6 +1,7 @@
 #相關函式庫
 import pandas as pd 
 from sklearn.ensemble import AdaBoostClassifier
+from sklearn.naive_bayes import GaussianNB
 from sklearn.model_selection import train_test_split
 from sklearn import metrics
 
@@ -12,7 +13,7 @@ sdf.fillna(mean,inplace = True)
 X = sdf.drop(['label'], axis = 1);
 y = sdf['label']
 
-print("Adaboost Classifier")
+print("\n ----------  Adaboost Classifier  ----------\n")
 
 for i in range(20):
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.3,random_state = i)
@@ -22,4 +23,16 @@ for i in range(20):
     y_pred = abc.predict(X_test)
     print("Accuracy:",metrics.accuracy_score(y_test, y_pred))
     print("y_test:",list(y_test))
-    print("y_pred:",list(y_pred))
+    print("y_pred:",list(y_pred),"\n")
+    
+print("\n ----------  Bayesian Classifier  ----------\n")
+
+for i in range(20):
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.3,random_state = i)
+    print("seed:",i)
+    abc = GaussianNB()
+    abc.fit(X_train,y_train)
+    y_pred = abc.predict(X_test)
+    print("Accuracy:",metrics.accuracy_score(y_test, y_pred))
+    print("y_test:",list(y_test))
+    print("y_pred:",list(y_pred),"\n")
