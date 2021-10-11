@@ -1,11 +1,12 @@
 %!TEX program = xelatex
 \documentclass[a4paper, 12pt]{report}
 \usepackage{xeCJK, geometry, fontspec}
-\usepackage{bookmark}
 %-----------------------------------------------------
 \setCJKmainfont{教育部標準楷書}
 \setmainfont{Times New Roman}
 \linespread{1.5}
+\geometry{margin=2cm}
+\setlength{\parindent}{2em}
 %-----------------------------------------------------
 \title{
 	{\bf 肉類食品新鮮度監測系統}\\
@@ -25,5 +26,7 @@
 
 	\input{abs.tex}
 	\tableofcontents
+
+	\input{intro.tex}
 
 \end{document}
