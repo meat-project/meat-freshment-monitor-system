@@ -1,12 +1,14 @@
 %!TEX program = xelatex
 \documentclass[a4paper, 12pt]{report}
 \usepackage{xeCJK, geometry, fontspec}
+\usepackage[backend=biber,style=numeric,sorting=none]{biblatex}
 %-----------------------------------------------------
 \setCJKmainfont{教育部標準楷書}
 \setmainfont{Times New Roman}
 \linespread{1.5}
 \geometry{margin=2cm}
 \setlength{\parindent}{2em}
+\bibliography{main.bib}
 %-----------------------------------------------------
 \title{
 	{\Huge 肉類食品新鮮度監測系統}\\
@@ -29,4 +31,9 @@
 	\input{method.tex}
 	\input{result.tex}
 	\input{conclusion.tex}
+	
+	\nocite{*}
+    	\linespread{1}\selectfont
+    	\printbibliography[title=參考文獻]
+    	\addcontentsline{toc}{chapter}{參考文獻}
 \end{document}
