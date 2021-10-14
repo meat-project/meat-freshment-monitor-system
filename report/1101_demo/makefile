@@ -6,7 +6,7 @@ clean:
 	rm -f *.bcf
 	rm -f *.log
 	rm -f *.run.xml
-	rm -f *.synctex.gz
+	rm -f *.synctex*
 	rm -f *.toc
 clean_all: clean
 	rm -f main.pdf
