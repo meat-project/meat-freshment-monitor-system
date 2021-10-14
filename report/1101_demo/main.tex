@@ -1,0 +1,39 @@
+%!TEX program = xelatex
+\documentclass[a4paper, 12pt]{report}
+\usepackage{xeCJK, geometry, fontspec}
+\usepackage[backend=biber,style=numeric,sorting=none]{biblatex}
+%-----------------------------------------------------
+\setCJKmainfont{教育部標準楷書}
+\setmainfont{Times New Roman}
+\linespread{1.5}
+\geometry{margin=2cm}
+\setlength{\parindent}{2em}
+\bibliography{main.bib}
+%-----------------------------------------------------
+\title{
+	{\Huge 肉類食品新鮮度監測系統}\\
+	{\bf Monitoring System of Freshness of Meat}\\[2cm]
+	{國立中山大學資訊工程學系}\\
+	{110 學年度大學部專題製作競賽}\\[2cm]
+}
+\author{
+	{Arthor: 李銘庭 (B073040005), 伍建瑋 (B073040008), 蔡孟師 (B073040019)}\\[1cm]
+	{Advisor: 賴威光}
+}
+\date{}
+
+\begin{document}
+	\maketitle
+	\input{abs.tex}
+	\tableofcontents
+	\input{intro.tex}
+	\input{related.tex}
+	\input{method.tex}
+	\input{result.tex}
+	\input{conclusion.tex}
+	
+	\nocite{*}
+    	\linespread{1}\selectfont
+    	\printbibliography[title=參考文獻]
+    	\addcontentsline{toc}{chapter}{參考文獻}
+\end{document}
