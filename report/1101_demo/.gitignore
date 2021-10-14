@@ -1,6 +1,12 @@
+*-blx.bib
 *.aux
+*.bbl
 *.bcf
+*.blg
+*.fdb*
+*.fls
 *.log
 *.run.xml
 *.synctex*
 *.toc
+*.xdv
