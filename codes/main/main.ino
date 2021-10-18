@@ -1,7 +1,5 @@
 #include "MHZ.h"
 #include <SoftwareSerial.h>
-#include <SPI.h> //Include SPI library (needed for the SD card)
-#include <SD.h>
 
 const int MQ136_PIN = A0;
 const int MQ137_PIN = A1;
@@ -35,18 +33,11 @@ void setup()  // Runs only once
 }
 
 void loop() {
-	file_write_counter %= FILE_WRITE_DELAY;
-	if (file_write_counter == 0) {
-		myfile = SD.open("../../result/testout.txt", FILE_WRITE);
-	}
 	mq136_routine();
 	mq137_routine();
 	mhz19b_routine();
-	if (file_write_counter == 0) {
-		myfile.close();
-	}
+	
 	delay(LOOP_DELAY);
-	file_write_counter += LOOP_DELAY;
 }
 
 void mq136_routine() {
@@ -68,10 +59,6 @@ void mq136_routine() {
 	Serial.print("H2S: ");
 	Serial.print(ppm);
 	Serial.println(" ppm");
-	if (file_write_counter == 0) {
-		myfile.print(ppm);
-		myfile.print(", ");
-	}
 }
 
 void mq137_routine() {
@@ -91,10 +78,6 @@ void mq137_routine() {
 	Serial.print("NH3: ");
 	Serial.print(ppm);
 	Serial.println(" ppm");
-	if (file_write_counter == 0) {
-		myfile.print(ppm);
-		myfile.print(", ");
-	}
 }
 
 void mhz19b_routine() {
@@ -102,9 +85,7 @@ void mhz19b_routine() {
 	Serial.print("CO2: ");
 	Serial.print(co2_ppm);
 	Serial.println(" ppm");
-	if (file_write_counter == 0) {
-		myfile.println(co2_ppm);
-	}
+	
 	/*int temperature = mhz19b.getLastTemperature();	// not configured due to no Rx,Tx connections.
 	Serial.print("temperature = ");
 	Serial.println(temperature);*/
