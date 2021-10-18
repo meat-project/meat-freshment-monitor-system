@@ -68,7 +68,7 @@ void mq136_routine() {
 	Serial.println(" ppm");
 	if (file_write_counter == 0) {
 		myfile.print(ppm);
-		myfile.print(", ")
+		myfile.print(", ");
 	}
 }
 
@@ -91,7 +91,7 @@ void mq137_routine() {
 	Serial.println(" ppm");
 	if (file_write_counter == 0) {
 		myfile.print(ppm);
-		myfile.print(", ")
+		myfile.print(", ");
 	}
 }
 
@@ -101,7 +101,7 @@ void mhz19b_routine() {
 	Serial.print(co2_ppm);
 	Serial.println(" ppm");
 	if (file_write_counter == 0) {
-		myfile.println(ppm);
+		myfile.println(co2_ppm);
 	}
 	/*int temperature = mhz19b.getLastTemperature();	// not configured due to no Rx,Tx connections.
 	Serial.print("temperature = ");
