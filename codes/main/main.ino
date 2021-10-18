@@ -7,10 +7,8 @@ const int MHZ19B_PIN = 10;
 const int ITER_TIME = 500;
 const int SETUP_DELAY = 5000;
 const int LOOP_DELAY = 2000;
-const int FILE_WRITE_DELAY = 300*LOOP_DELAY;
+
 MHZ mhz19b(MHZ19B_PIN, MHZ19B);
-File myfile;
-int file_write_counter = 0;
 
 
 void setup()  // Runs only once
