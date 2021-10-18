@@ -5,5 +5,5 @@ import time
 ser=serial.Serial('/dev/ttyACM0', 9600)
 
 while True:
-	serialdata=ser.readline() 
-	print(serialdata, end='')
+    serialdata = ser.readline()
+    print(serialdata.decode('utf-8'), end='')
