@@ -1,6 +1,7 @@
 #include "MHZ.h"
-//#include <ESP8266WiFi.h>
 #include <SoftwareSerial.h>
+#include <SPI.h> //Include SPI library (needed for the SD card)
+#include <SD.h>
 
 const int MQ136_PIN = A0;
 const int MQ137_PIN = A1;
@@ -9,6 +10,9 @@ const int ITER_TIME = 500;
 const int SETUP_DELAY = 5000;
 const int LOOP_DELAY = 2000;
 MHZ mhz19b(MHZ19B_PIN, MHZ19B);
+File myfile;
+int file_write_counter = 0;
+const int FILE_WRITE_DELAY = 300;
 
 void setup()  // Runs only once
 {
@@ -30,36 +34,49 @@ void setup()  // Runs only once
 }
 
 void loop() {
+	++file_write_counter %= FILE_WRITE_DELAY;
+	if (file_write_counter == 0) {
+		myfile = SD.open("../../result/testout.txt", FILE_WRITE);
+	}
 	mq136_routine();
 	mq137_routine();
 	mhz19b_routine();
+	if (file_write_counter == 0) {
+		myfile.close();
+	}
 	delay(LOOP_DELAY);
 }
 
 void mq136_routine() {
-	float m_136 = -0.23;  // Slope
-	float b_136 = 0.449;  // Y-Intercept
-	float R0_136 = 43.5;  // Sensor Resistance in fresh air
-	float RL_136 = 20.0;
+	const static float m_136 = -0.23;  // Slope
+	const static float b_136 = 0.449;  // Y-Intercept
+	const static float R0_136 = 43.5;  // Sensor Resistance in fresh air
+	const static float RL_136 = 20.0;
 	float sensor_volt;	// Define variable for sensor voltage
 	float RS_gas;		// Define variable for sensor resistance
 	float ratio;		// Define variable for ratio
 	double sensorValue = analogRead(MQ136_PIN);
+
 	sensor_volt = sensorValue * (5.0 / 1023.0);
 	RS_gas = ((5.0 * RL_136) / sensor_volt) - RL_136;  // Get value of RS in a gas
 	ratio = RS_gas / R0_136;						   // Get ratio RS_gas/RS_air
 	double ppm_log = (log10(ratio) - b_136) / m_136;   // Get ppm value in linear scale according to the the ratio value
 	double ppm = pow(10, ppm_log);					   // Convert ppm value to log scale
+
 	Serial.print("H2S: ");
 	Serial.print(ppm);
 	Serial.println(" ppm");
+	if (file_write_counter == 0) {
+		myfile.print(ppm);
+		myfile.print(", ")
+	}
 }
 
 void mq137_routine() {
-	const double RL = 47;	  // The value of resistor RL is 47K
-	const double m = -0.263;  // Enter calculated Slope
-	const double b = 0.42;	  // Enter calculated intercept
-	const double Ro = 20;	  // Enter found Ro value
+	const static double RL = 47;	  // The value of resistor RL is 47K
+	const static double m = -0.263;  // Enter calculated Slope
+	const static double b = 0.42;	  // Enter calculated intercept
+	const static double Ro = 20;	  // Enter found Ro value
 	double VRL;				  // Voltage drop across the MQ sensor
 	double Rs;				  // Sensor resistance at gas concentration
 	double ratio;			  // Define variable for ratio
@@ -72,6 +89,10 @@ void mq137_routine() {
 	Serial.print("NH3: ");
 	Serial.print(ppm);
 	Serial.println(" ppm");
+	if (file_write_counter == 0) {
+		myfile.print(ppm);
+		myfile.print(", ")
+	}
 }
 
 void mhz19b_routine() {
@@ -79,6 +100,9 @@ void mhz19b_routine() {
 	Serial.print("CO2: ");
 	Serial.print(co2_ppm);
 	Serial.println(" ppm");
+	if (file_write_counter == 0) {
+		myfile.println(ppm);
+	}
 	/*int temperature = mhz19b.getLastTemperature();	// not configured due to no Rx,Tx connections.
 	Serial.print("temperature = ");
 	Serial.println(temperature);*/
