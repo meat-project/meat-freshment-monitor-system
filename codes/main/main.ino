@@ -9,10 +9,11 @@ const int MHZ19B_PIN = 10;
 const int ITER_TIME = 500;
 const int SETUP_DELAY = 5000;
 const int LOOP_DELAY = 2000;
+const int FILE_WRITE_DELAY = 300*LOOP_DELAY;
 MHZ mhz19b(MHZ19B_PIN, MHZ19B);
 File myfile;
 int file_write_counter = 0;
-const int FILE_WRITE_DELAY = 300;
+
 
 void setup()  // Runs only once
 {
@@ -34,7 +35,7 @@ void setup()  // Runs only once
 }
 
 void loop() {
-	++file_write_counter %= FILE_WRITE_DELAY;
+	file_write_counter %= FILE_WRITE_DELAY;
 	if (file_write_counter == 0) {
 		myfile = SD.open("../../result/testout.txt", FILE_WRITE);
 	}
@@ -45,6 +46,7 @@ void loop() {
 		myfile.close();
 	}
 	delay(LOOP_DELAY);
+	file_write_counter += LOOP_DELAY;
 }
 
 void mq136_routine() {
