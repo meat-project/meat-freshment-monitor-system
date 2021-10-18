@@ -18,12 +18,6 @@ void setup()  // Runs only once
 	pinMode(MQ137_PIN, INPUT);
 	pinMode(MHZ19B_PIN, INPUT);
 
-	// mhz19b.setDebug(true);
-	Serial.print("Waiting for MH-Z19B preheating ");
-	while(!mhz19b.isReady()) {
-		delay(SETUP_DELAY);
-		Serial.print(".");
-	}
 	Serial.println("MQ-136  for H2S");
 	Serial.println("MQ-137  for NH3");
 	Serial.println("MH-Z19B for CO2 and temperature");
