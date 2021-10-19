@@ -23,3 +23,7 @@ predict_result = clf.predict(X_predict)"""
 """pickle_in = open('KNN.pickle','rb')
 clf = pickle.load(pickle_in)
 predict_result = clf.predict(X_predict)"""
+#decisiontree
+"""pickle_in = open('DecisionTreeClassifier.pickle','rb')
+clf = pickle.load(pickle_in)
+predict_result = clf.predict(X_predict)"""
