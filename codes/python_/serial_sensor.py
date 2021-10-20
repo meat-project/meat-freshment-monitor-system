@@ -10,8 +10,10 @@ ser=serial.Serial('/dev/ttyACM0', 9600)
 def getPredictX():
 	serialdata = ''
 	ret = {}
+	print("fuck"+repr(serialdata));
 	while serialdata == '' or serialdata.split()[0] != 'H2S:':
 		serialdata = ser.readline().decode('utf-8')
+		
 		#print('before split:' + serialdata)
 	#print(serialdata.split()[1])
 	ret['H2S'] = float(serialdata.split()[1])
