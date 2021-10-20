@@ -12,13 +12,13 @@ def getPredictX():
 	ret = {}
 	while serialdata == '' or serialdata.split()[0] != 'H2S:':
 		serialdata = ser.readline().decode('utf-8')
-	print(serialdata)
+	print(serialdata.split()[1])
 	ret['H2S'] = serialdata.split()[1]
 	serialdata = ser.readline().decode('utf-8')
-	print(serialdata)
+	print(serialdata.split()[1])
 	ret['NH3'] = serialdata.split()[1]
 	serialdata = ser.readline().decode('utf-8')
-	print(serialdata)
+	print(serialdata.split()[1])
 	ret['CO2'] = serialdata.split()[1]
 	return ret
 	
