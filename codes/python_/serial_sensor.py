@@ -26,23 +26,27 @@ def getPredictX():
 
 while True:
 	dic = getPredictX()
-	print(dic)
+	#print(dic)
 	X_predict = pd.DataFrame([dic])
-	print(X_predict)
+	#print(X_predict)
 
-	'''#AdaboostClassifier
+	#AdaboostClassifier
 	pickle_in = open('AdaboostClassifier.pickle','rb')
 	clf = pickle.load(pickle_in)
 	predict_result = clf.predict(X_predict)
+	print("adaboost: ", X_predict)
 	#BayesianClassifier.pickle
 	pickle_in = open('BayesianClassifier.pickle','rb')
 	clf = pickle.load(pickle_in)
 	predict_result = clf.predict(X_predict)
+	print("BayesianClassifier: ", X_predict)
 	#KNN
 	pickle_in = open('KNN.pickle','rb')
 	clf = pickle.load(pickle_in)
 	predict_result = clf.predict(X_predict)
+	print("KNN: ", X_predict)
 	#decisiontree
 	pickle_in = open('DecisionTreeClassifier.pickle','rb')
 	clf = pickle.load(pickle_in)
-	predict_result = clf.predict(X_predict)'''
+	predict_result = clf.predict(X_predict)
+	print("decisiontree: ", X_predict)
