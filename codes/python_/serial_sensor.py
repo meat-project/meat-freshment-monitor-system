@@ -12,7 +12,7 @@ def getPredictX():
 	ret = {}
 	while serialdata == '' or serialdata.split()[0] != 'H2S:':
 		serialdata = ser.readline().decode('utf-8')
-		print('before split:' + serialdata)
+		#print('before split:' + serialdata)
 	print(serialdata.split()[1])
 	ret['H2S'] = float(serialdata.split()[1])
 	serialdata = ser.readline().decode('utf-8')
