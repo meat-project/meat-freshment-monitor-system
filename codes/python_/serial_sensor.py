@@ -7,7 +7,7 @@ import pandas as pd
 #opening serial port
 ser=serial.Serial('/dev/ttyACM0', 9600)
 
-def getPredictX:
+def getPredictX():
 	serialdata = ''
 	ret = {}
 	while serialdata == '' or serialdata.split()[0] != 'H2S:'
