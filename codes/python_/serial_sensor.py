@@ -26,7 +26,7 @@ def getPredictX():
 while True:
 	dic = getPredictX()
 	print(dic)
-	X_predict = pd.DataFrame(dic)
+	X_predict = pd.DataFrame([dic])
 	print(X_predict)
 
 	'''#AdaboostClassifier
