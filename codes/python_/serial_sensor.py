@@ -46,7 +46,7 @@ while True:
 	predict_result = clf.predict(X_predict)
 	print("KNN: ", X_predict)
 	#decisiontree
-	pickle_in = open('DecisionTreeClassifier.pickle','rb')
+	"""pickle_in = open('DecisionTreeClassifier.pickle','rb')
 	clf = pickle.load(pickle_in)
 	predict_result = clf.predict(X_predict)
-	print("decisiontree: ", X_predict)
+	print("decisiontree: ", X_predict)"""
