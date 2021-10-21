@@ -1,6 +1,26 @@
 # Meat-Freshment-Monitor-System (肉類食品新鮮度監測系統)
+
 ---
+
 ## Usage
+
+1. `cd meat-freshment-monitor-system/codes/main`
+   - open ardion IDE, then compile and upload code.
+2. `cd meat-freshment-monitor-system/codes/python_`
+3. `make`
+4. `make run`
+
+### Arduino
+
+1. 在 `meat-freshment-monitor-system/codes/main` 資料夾中
+2. makefile 有解決 permission 問題和自動排版的功能，使用 `make` 功能即可。
+3. 使用 arduino IDE 作為環境， upload 後，即可開始使用 python code 預測。
+
+### python code
+
+1. 使用 arduino IDE upload code 到 arduino board 之後，到 `meat-freshment-monitor-system/codes/python_` 資料夾中
+2. 使用 makefile 即可建立模型，並開始即時預測肉類新鮮度分類。
+3. 若有 makefile 使用上問題，可使用 `make help`
 
 ### problems
 
