@@ -1,6 +1,6 @@
 /* MHZ library
 
-    By Tobias Schürg
+	By Tobias Schürg
 */
 #ifndef MHZ_H
 #define MHZ_H
@@ -26,38 +26,38 @@ extern const int STATUS_INCOMPLETE;
 extern const int STATUS_NOT_READY;
 
 class MHZ {
- public:
-  MHZ(uint8_t rxpin, uint8_t txpin, uint8_t pwmpin, uint8_t type);
-  MHZ(uint8_t rxpin, uint8_t txpin, uint8_t type);
-  MHZ(uint8_t pwmpin, uint8_t type);
-  MHZ(Stream * serial, uint8_t pwmpin, uint8_t type);
-  MHZ(Stream * serial, uint8_t type);
-  ~MHZ();
+public:
+	MHZ(uint8_t rxpin, uint8_t txpin, uint8_t pwmpin, uint8_t type);
+	MHZ(uint8_t rxpin, uint8_t txpin, uint8_t type);
+	MHZ(uint8_t pwmpin, uint8_t type);
+	MHZ(Stream* serial, uint8_t pwmpin, uint8_t type);
+	MHZ(Stream* serial, uint8_t type);
+	~MHZ();
 
-  void setDebug(boolean enable);
+	void setDebug(boolean enable);
 
-  boolean isPreHeating();
-  boolean isReady();
-  void setAutoCalibrate(boolean b);
-  void calibrateZero();
-  void setRange(int range);
- // void calibrateSpan(int range); //only for professional use... see implementation and Dataheet.
+	boolean isPreHeating();
+	boolean isReady();
+	void setAutoCalibrate(boolean b);
+	void calibrateZero();
+	void setRange(int range);
+	// void calibrateSpan(int range); //only for professional use... see implementation and Dataheet.
 
-  int readCO2UART();
-  int readCO2PWM();
-  int getLastTemperature();
+	int readCO2UART();
+	int readCO2PWM();
+	int getLastTemperature();
 
- private:
-  uint8_t _pwmpin, _type, temperature;
-  boolean debug = false;
+private:
+	uint8_t _pwmpin, _type, temperature;
+	boolean debug = false;
 
-  Stream * _serial;
-  byte getCheckSum(byte *packet);
+	Stream* _serial;
+	byte getCheckSum(byte* packet);
 
-  unsigned long lastRequest = 0;
+	unsigned long lastRequest = 0;
 
-  bool SerialConfigured = true;
-  bool PwmConfigured = true;
+	bool SerialConfigured = true;
+	bool PwmConfigured = true;
 };
 
 #endif

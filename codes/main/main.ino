@@ -10,7 +10,6 @@ const int LOOP_DELAY = 2000;
 
 MHZ mhz19b(MHZ19B_PIN, MHZ19B);
 
-
 void setup()  // Runs only once
 {
 	Serial.begin(9600);
@@ -28,7 +27,7 @@ void loop() {
 	mq136_routine();
 	mq137_routine();
 	mhz19b_routine();
-	
+
 	delay(LOOP_DELAY);
 }
 
@@ -54,13 +53,13 @@ void mq136_routine() {
 }
 
 void mq137_routine() {
-	const static double RL = 47;	  // The value of resistor RL is 47K
-	const static double m = -0.263;  // Enter calculated Slope
-	const static double b = 0.42;	  // Enter calculated intercept
-	const static double Ro = 20;	  // Enter found Ro value
-	double VRL;				  // Voltage drop across the MQ sensor
-	double Rs;				  // Sensor resistance at gas concentration
-	double ratio;			  // Define variable for ratio
+	const static double RL = 47;	 // The value of resistor RL is 47K
+	const static double m = -0.263;	 // Enter calculated Slope
+	const static double b = 0.42;	 // Enter calculated intercept
+	const static double Ro = 20;	 // Enter found Ro value
+	double VRL;						 // Voltage drop across the MQ sensor
+	double Rs;						 // Sensor resistance at gas concentration
+	double ratio;					 // Define variable for ratio
 
 	VRL = analogRead(MQ137_PIN) * (5.0 / 1023.0);	 // Measure the voltage drop and convert to 0-5V
 	Rs = ((5.0 * RL) / VRL) - RL;					 // Use formula to get Rs value
@@ -77,7 +76,7 @@ void mhz19b_routine() {
 	Serial.print("CO2: ");
 	Serial.print(co2_ppm);
 	Serial.println(" ppm");
-	
+
 	/*int temperature = mhz19b.getLastTemperature();	// not configured due to no Rx,Tx connections.
 	Serial.print("temperature = ");
 	Serial.println(temperature);*/
