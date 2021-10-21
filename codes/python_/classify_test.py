@@ -3,6 +3,7 @@ import pandas as pd
 from sklearn.ensemble import AdaBoostClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.naive_bayes import GaussianNB
+from sklearn import tree
 from sklearn.model_selection import train_test_split
 from sklearn import metrics
 import pickle
@@ -55,3 +56,18 @@ print("y_pred:",list(y_pred))
 ##save module
 with open('KNN.pickle','wb') as f:
      pickle.dump(abc, f)
+
+
+print("\n ----------  DecisionTreeClassifier ---------- \n")
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.3,random_state = 18)
+clf = tree.DecisionTreeClassifier(criterion='gini',random_state=0, max_depth=2)
+clf.fit(X, y)
+y_pred = clf.predict(X_test)
+print("Accuracy:",metrics.accuracy_score(y_test, y_pred))
+print("y_test:",list(y_test))
+print("y_pred:",list(y_pred))
+
+##save module
+with open('DecisionTreeClassifier.pickle','wb') as f:
+     pickle.dump(clf, f)

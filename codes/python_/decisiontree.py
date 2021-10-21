@@ -13,7 +13,7 @@ sdf.fillna(mean,inplace = True)
 X = sdf.drop(['label'], axis = 1);
 y = sdf['label']
 
-print("DecisionTreeClassifier")
+print("\n ----------  DecisionTreeClassifier ---------- \n")
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.3,random_state = 18)
 clf = tree.DecisionTreeClassifier(criterion='gini',random_state=0, max_depth=2)
