@@ -6,5 +6,4 @@ classitier_gen:
 	@python3 classify_test.py
 	@python3 decisiontree.py
 clean:
-	@echo remove classifiers
 	@rm -rf *.pickle
