@@ -1,4 +1,4 @@
-all: clean
+all:
 	latexmk -xelatex -file-line-error -halt-on-error -interaction=nonstopmode -synctex=1  -f main.tex
 clean:
 	rm -f *-blx.bib
