@@ -7,10 +7,11 @@
 紅酒競賽獲得的成績，其相關性不高。此外，人體的感官也可能因為年齡或者其他變因
 而產生誤差 \cite{Hugh2015} 。因此，依靠人類的感官作為判斷依據的可靠度值得懷疑。
 \subsection{原理}
-電子鼻是一種用來模擬鼻子功能的電子儀器。利用多個感測器組合而成的一個整體，
-而氣體在接觸到電子鼻時，內部的每個感測器會產生不同程度的電阻變化，因此透過
-比對不同變化，即可產生電子指紋圖（electronic fingerprint）並辨識出
-此為何種氣體，更甚者可計算出該氣體濃度。 \footnote{\url{https://scitechvista.nat.gov.tw/Article/C000003/detail?ID=e1893f7f-9eda-4ed7-ada0-dc226bfc1d57}}
+電子鼻是一種用來模擬鼻子功能的電子儀器。利用多個感測器組合而成的一個整體。
+而氣體在接觸到電子鼻時，內部的每個感測器會產生不同程度的電阻變化。不同氣體的濃度變化，
+影響每個感測器的劇烈程度也不盡相同。因此透過比對每個感測器的變化，即可測量得到不同的電阻變化組合，進而產生
+電子指紋圖（electronic fingerprint）並辨識出是何種氣體影響感測器的電阻，
+更甚者可計算出該氣體濃度。 \footnote{\url{https://scitechvista.nat.gov.tw/Article/C000003/detail?ID=e1893f7f-9eda-4ed7-ada0-dc226bfc1d57}}
 \subsection{應用}
 隨著科技演進，越來越多技術可以應用在電子鼻上。舉例來說，人工智慧可以運用
 在電子鼻上，幫助提昇效能，使電子鼻能夠被運用在更複雜的環境，例如檢測膀胱癌。 \footnote{\url{https://case.ntu.edu.tw/blog/?p=36043}}
@@ -20,14 +21,22 @@
 \end{figure}
 
 \section{人體氣味感測實例-三點比較式嗅袋法}
-利用多個人嗅聞的結果下去取平均值，減少誤差的人工測試法（三點比較式嗅袋法\footnote{\url{https://www.epa.gov.tw/DisplayFile.aspx?FileID=96A2ABC05E2DB1F6}}）
-- 人體嗅覺是否能察覺有害氣體。
+此項作法\footnote{\url{https://www.chinatimes.com/newspapers/20200828000729-260107?chdtv}}因為是透過人工，因此較難獲得精確的測量值。因此也會有不少測驗來盡量提高實驗的準確性（三點比較式嗅袋法\footnote{\url{https://www.epa.gov.tw/DisplayFile.aspx?FileID=96A2ABC05E2DB1F6}}）：
+	\begin{itemize}
+		\item 利用多個人嗅聞的結果下去取平均值，減少誤差的人工測試法
+		\item 每位測試員在測量之前，都會經過一個嗅覺測試，以確保測試員的狀況是可以正常發揮。若測試員無法通過前置嗅覺測試，則不會採用該測試員來嗅聞。
+	\end{itemize}	
+下列為聞臭師示意圖
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\textwidth]{pic/smell_worker.jpg}
+	\end{figure}
 \subsection{作法}
-\begin{enumerate}
-	\item 先將某個待採樣氣體放於三個袋子其中一袋。並請多個測試員聞袋子。
-	\item 該測試會不斷嘗試稀釋袋內空氣，當多數測試員能夠聞出味道的最低濃度，再去推算稀釋了幾倍，
-		即可得到原始氣體濃度。
-\end{enumerate}
+	\begin{enumerate}
+		\item 先將某個待採樣氣體放於三個袋子其中一袋。並請多個測試員聞袋子。
+		\item 該測試會不斷嘗試稀釋袋內空氣，當多數測試員能夠聞出味道的最低濃度，再去推算稀釋了幾倍，
+			即可得到原始氣體濃度。
+	\end{enumerate}
 
 \section{氣味感測器實例應用}
 	\subsection{油管漏油事件}
